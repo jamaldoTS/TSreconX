@@ -22,7 +22,7 @@
 ## git clone https://github.com/jamaldoTS/TSreconX.git
 ## cd TSreconX
 ## pip install -r requirements.txt
-## python tsreconx.py
+## python TSreconX.py
 
 > ⚠️ Ensure you have Python 3.8+ and Git installed.
 

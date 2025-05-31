@@ -1,4 +1,3 @@
-
 import tkinter as tk
 from tkinter import ttk, scrolledtext, messagebox, filedialog
 import threading
@@ -15,7 +14,7 @@ from pathlib import Path
 class TSReconX:
     def __init__(self, root):
         self.root = root
-        self.root.title("TSreconX")
+        self.root.title("TSReconX")
         self.root.geometry("1200x800")
         self.recon_active = False
         self.finding_stats = {"high": 0, "medium": 0, "low": 0, "dorks": 0, "repos": 0, "cicd": 0}
@@ -67,7 +66,7 @@ class TSReconX:
         bottom_frame.pack(fill="x", padx=10, pady=5)
         ttk.Button(bottom_frame, text="Export Report", command=self.export_report).pack(side="left")
 
-        attribution = ttk.Label(self.root, text="Created by Jamal Mohamed â€” Turbine Shield Technologies", anchor="center")
+        attribution = ttk.Label(self.root, text="Created by Jamal Mohamed — Turbine Shield Technologies", anchor="center")
         attribution.pack(side="bottom", pady=2)
 
     def log(self, tab, message):
@@ -93,7 +92,7 @@ class TSReconX:
         content = self.generate_report(final=True)
         file_path = filedialog.asksaveasfilename(defaultextension=".md", filetypes=[("Markdown files", "*.md")])
         if file_path:
-            with open(file_path, "w") as f:
+            with open(file_path, "w", encoding="utf-8") as f:
                 f.write(content)
             messagebox.showinfo("Exported", f"Saved to {file_path}")
 
@@ -265,11 +264,11 @@ class TSReconX:
                 if content:
                     report += f"## {name} Results\n\n{content}\n\n"
         report += ("\n---\n**Summary**\n\n"
-                   f"ðŸ”´ High Severity: {self.finding_stats['high']}\n"
-                   f"ðŸŸ¡ Medium Severity: {self.finding_stats['medium']}\n"
-                   f"ðŸ“ Repos Scanned: {self.finding_stats['repos']}\n"
-                   f"ðŸ” Dork Queries Run: {self.finding_stats['dorks']}\n"
-                   f"âš™ CI/CD Alerts: {self.finding_stats['cicd']}\n")
+                   f"❌ High Severity: {self.finding_stats['high']}\n"
+                   f"⚠️ Medium Severity: {self.finding_stats['medium']}\n"
+                   f"📁 Repos Scanned: {self.finding_stats['repos']}\n"
+                   f"🔍 Dork Queries Run: {self.finding_stats['dorks']}\n"
+                   f"⚙️ CI/CD Alerts: {self.finding_stats['cicd']}\n")
         return report
 
     def open_support_window(self):
